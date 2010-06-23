@@ -1,3 +1,3 @@
 overlays:
-	dev-scala/scala/scala-2.8.0.ebuild - ebuild for latest scala binary build
-	
+	dev-scala/scala/scala-2.8.0_rc4.ebuild - latest scala binary build
+	app-emacs/scala-mode/scala-mode-2.8.0_rc4.ebuild - scala mode for emacs
