@@ -1,3 +1,0 @@
-overlays:
-	dev-scala/scala/scala-2.8.1.ebuild - latest stable scala build
-	app-emacs/scala-mode/scala-mode-2.8.0_rc4.ebuild - scala mode for emacs

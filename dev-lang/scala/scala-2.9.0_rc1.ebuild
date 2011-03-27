@@ -1,6 +1,6 @@
 inherit eutils multilib portability java-pkg-2 versionator
 
-PROJECT_DISTR="scala-2.8.0.RC4"
+PROJECT_DISTR="scala-2.9.0.RC1"
 
 SLOT="0"
 LICENSE="BSD"
@@ -13,13 +13,13 @@ DEPEND=">=virtual/jdk-1.5"
 S=${WORKDIR}
 
 scala_launcher() {
-	local SCALADIR="/opt/scala-unstable/${PROJECT_DISTR}"
+	local SCALADIR="/opt/${PROJECT_DISTR}"
 	local bcp="${SCALADIR}/lib/scala-library.jar"
 	java-pkg_dolauncher "${1}" --main "${2}" --java_args "-Xmx256M -Xms32M -Dscala.home=${SCALADIR}"
 }
 
 src_install() {
-	declare SCALA_HOME=/opt/scala-unstable
+	declare SCALA_HOME=/opt/
 
 	dodir ${SCALA_HOME}
 	cp -R ${PROJECT_DISTR}/ "${D}"${SCALA_HOME} || die "Unable to install"
