@@ -15,6 +15,7 @@ To install scala binary distribution you will do next steps:
 
 You can maintain selected scala installations. Updated ebuilds for 2.9.0rc2 and 2.8.1 to use together.
 You can switch current scala version using eselect module:
+
     $ eselect scala list
     $   [1]   scala-2.9.0 *
     $   [2]   scala-2.8.1
