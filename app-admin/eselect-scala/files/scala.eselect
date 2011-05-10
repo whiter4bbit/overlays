@@ -1,0 +1,107 @@
+DESCRIPTION="Manage Scala targets"
+MAINTAINER="wr4bbit@gmail.com"
+VERSION="0"
+SCALA_BIN="${ROOT}/usr/bin/scala"
+BIN="${ROOT}/usr/bin"
+
+SCALA_BINARIES=(scala scalac scaladoc scalap fsc)
+
+describe_list() {
+   echo "List of installed scala versions"
+}
+
+find_targets() {
+   for f in $(ls -r ${BIN}/scala-[0-9]*) ; do
+      echo ${f}
+   done
+}
+
+do_list() {
+   local targets=( $(find_targets) )   
+   local i line
+   for (( i = 0; i < ${#targets[@]}; i++ )) ; do
+      line=$(basename "${targets[i]}")
+      if [[ ${targets[i]} = $(readlink ${SCALA_BIN}) ]] ; then
+        line=$(highlight_marker "${line}")
+      fi      
+      targets[i]="${line}"
+   done
+   write_numbered_list "${targets[@]}"
+}
+
+describe_show() {
+   echo "Show current target"
+}
+
+do_show() {
+   if [ -e "${SCALA_BIN}" ] ; then 
+      local p=$(readlink ${SCALA_BIN})
+      write_kv_list_entry "$(basename ${p})" ""
+   else
+      write_kv_list_entry "(none)" ""
+   fi
+}
+
+describe_set() {
+   echo "Set current target"
+}
+
+describe_set_parameters() {
+   echo "<target>"
+}
+
+describe_set_options() {
+   echo "target: scala target to set"   
+}
+
+remove_symlinks() {
+   local postfix=${1}
+   for b in ${SCALA_BINARIES[*]}
+   do
+      local bin_path="${BIN}/${b}"
+      [[ -e "${bin_path}" ]] && rm "${bin_path}"
+   done
+}
+
+create_symlinks() {
+   local postfix=${1}
+   for b in ${SCALA_BINARIES[*]}
+   do
+      local link_path="${BIN}/${b}${postfix}"
+      local bin_path="${BIN}/${b}"
+      ln -s "${link_path}" "${bin_path}"
+   done
+}
+
+check_postfix() {
+   local postfix=${1}
+   local target=${2}
+   for b in ${SCALA_BINARIES[*]}
+   do
+      local link_path="${BIN}/${b}${postfix}"
+      if [[ ! -e "${link_path}" ]]; then 
+         write_error_msg "Invalid target ${target}"
+	 exit
+      fi	 
+   done
+}
+
+do_set() {
+   local target=${1} 
+   
+   local postfix
+   if [[ ${target} =~ (\-([0-9\.]+)) ]]; then
+      postfix="${BASH_REMATCH[1]}"
+   else
+      write_error_msg "Incorrect target"
+      exit      
+   fi
+
+   check_postfix "${postfix}" "${target}"
+
+   remove_symlinks "${postfix}"
+   create_symlinks "${postfix}"
+
+   do_show
+}
+# vim: set ft=eselect :
