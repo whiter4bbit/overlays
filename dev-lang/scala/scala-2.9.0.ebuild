@@ -1,12 +1,13 @@
 inherit eutils multilib portability java-pkg-2 versionator
 
-PROJECT_DISTR="scala-2.9.0.RC2"
+PROJECT_DISTR="scala-2.9.0"
 
 SLOT="2.9.0"
 LICENSE="BSD"
-DESCRIPTION="Scala unstable versions"
+DESCRIPTION="Scala 2.9.0 release"
 HOMEPAGE="http://www.scala-lang.org"
-SRC_URI="http://www.scala-lang.org/downloads/distrib/files/${PROJECT_DISTR}.tgz"
+DISTR_POSTFIX=".final"
+SRC_URI="http://www.scala-lang.org/downloads/distrib/files/${PROJECT_DISTR}${DISTR_POSTFIX}.tgz"
 
 DEPEND=">=virtual/jdk-1.5"
 
