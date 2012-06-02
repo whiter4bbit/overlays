@@ -1,0 +1,25 @@
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+inherit eutils java-pkg-2
+
+SLOT="0"
+LICENSE="BSD"
+DESCRIPTION="sbt is a build tool for Scala and Java projects that aims to do the basics well"
+HOMEPAGE="http://github.com/harrah/xsbt"
+MY_PN="sbt-launch"
+MY_PV="0.13.0-20120530-052139"
+SRC_URI="http://typesafe.artifactoryonline.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/${MY_PV}/${MY_PN}.jar"
+
+DEPEND=">=virtual/jdk-1.6"
+
+S="${WORKDIR}"
+
+src_unpack() {
+    cp ${DISTDIR}/${MY_PN}.jar ${WORKDIR}
+}
+
+src_install() {
+    java-pkg_dojar ${MY_PN}.jar
+    java-pkg_dolauncher sbt --main xsbt.boot.Boot --java_args "-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M"
+}
