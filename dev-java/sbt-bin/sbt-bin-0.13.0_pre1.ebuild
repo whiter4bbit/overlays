@@ -16,6 +16,7 @@ OUT_PN="${MY_PN}-${MY_PV}"
 SRC_URI="http://typesafe.artifactoryonline.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/${MY_PV}/${MY_PN}.jar -> ${OUT_PN}.jar"
 
 DEPEND=">=virtual/jdk-1.6"
+KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}"
 
