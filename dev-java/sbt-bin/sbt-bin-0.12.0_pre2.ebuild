@@ -1,6 +1,9 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
+
+EAPI="2"
+
 inherit eutils java-pkg-2
 
 SLOT="0"
@@ -9,14 +12,15 @@ DESCRIPTION="sbt is a build tool for Scala and Java projects that aims to do the
 HOMEPAGE="http://github.com/harrah/xsbt"
 MY_PN="sbt-launch"
 MY_PV="0.12.0-M2"
-SRC_URI="http://typesafe.artifactoryonline.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/${MY_PV}/${MY_PN}.jar"
+OUT_PN="${MY_PN}-${MY_PV}"
+SRC_URI="http://typesafe.artifactoryonline.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/${MY_PV}/${MY_PN}.jar -> ${OUT_PN}.jar"
 
 DEPEND=">=virtual/jdk-1.6"
 
 S="${WORKDIR}"
 
 src_unpack() {
-    cp ${DISTDIR}/${MY_PN}.jar ${WORKDIR}
+    cp ${DISTDIR}/${OUT_PN}.jar ${WORKDIR}/${MY_PN}.jar
 }
 
 src_install() {
