@@ -1,25 +1,21 @@
-# whiter4bbit's gentoo overlay
+# Scala tools gentoo overlay
 
-This repo contains my gentoo overlays for scala packages.
+Contains scala-related ebuilds.
 
-1. scala-mode for emacs
-2. scala binary distribution
-3. scala eselect module
+## Using Layman
+This overlay can be integrated into your system using layman (http://wiki.gentoo.org/wiki/Layman).
 
-To install scala binary distribution you will do next steps:
+    $ sudo layman -f --overlays https://github.com/whiter4bbit/overlays/raw/master/layman.xml --add gentoo-scala-tools
+    $ sudo emerge sbt-bin # to emerge sbt
 
-    $ git clone git://github.com/whiter4bbit/overlays.git
-    $ cd overlays 
-    $ su
-    $ emerge dev-lang/scala/scala-2.9.0_rc2.ebuild
 
-You can maintain selected scala installations. Updated ebuilds for 2.9.0rc2 and 2.8.1 to use together.
-You can switch current scala version using eselect module:
+## Using eselect-scala
+You can have multiple installed scala versions and select active using eselect:
 
-    $ eselect scala list
+    $ sudo emerge eselect-scala
+    $ sudo eselect scala list
     $   [1]   scala-2.9.0 *
     $   [2]   scala-2.8.1
-    $ eselect scala set scala-2.8.1
+    $ sudo eselect scala set scala-2.8.1
     $   scala-2.8.1
-    
 
