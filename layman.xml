@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layman>
+  <overlay contact="wr4bbit@gmail.com" name="gentoo-scala-tools" src="git://github.com/whiter4bbit/overlays.git" status="unofficial" type="git">
+    <link>https://github.com/whiter4bbit/overlays</link>
+    <description>Scala tools overlays for Gentoo.</description>
+  </overlay>
+</layman>
