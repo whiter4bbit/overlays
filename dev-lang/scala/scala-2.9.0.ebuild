@@ -7,7 +7,7 @@ LICENSE="BSD"
 DESCRIPTION="Scala 2.9.0 release"
 HOMEPAGE="http://www.scala-lang.org"
 DISTR_POSTFIX=".final"
-SRC_URI="http://www.scala-lang.org/downloads/distrib/files/${PROJECT_DISTR}${DISTR_POSTFIX}.tgz"
+SRC_URI="http://www.scala-lang.org/files/archive/${PROJECT_DISTR}${DISTR_POSTFIX}.tgz"
 
 DEPEND=">=virtual/jdk-1.5"
 
