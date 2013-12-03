@@ -6,7 +6,7 @@ SLOT="2.10.1"
 LICENSE="BSD"
 DESCRIPTION="Scala 2.10.1 release"
 HOMEPAGE="http://www.scala-lang.org"
-SRC_URI="http://www.scala-lang.org/downloads/distrib/files/${PROJECT_DISTR}.tgz"
+SRC_URI="http://www.scala-lang.org/files/archive/${PROJECT_DISTR}.tgz"
 
 DEPEND=">=virtual/jdk-1.5
         app-admin/eselect-scala"
