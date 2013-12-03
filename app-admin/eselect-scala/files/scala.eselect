@@ -51,7 +51,7 @@ describe_set_parameters() {
 }
 
 describe_set_options() {
-   echo "target: scala target to set"   
+   echo "target: scala target(or number from 'list') to set"
 }
 
 remove_symlinks() {
@@ -89,6 +89,11 @@ check_postfix() {
 do_set() {
    local target=${1} 
    
+   if is_number "${target}"; then
+      local targets=( $(find_targets) )
+	  target=${targets[target-1]}
+   fi
+
    local postfix
    if [[ ${target} =~ (\-([0-9\.]+)) ]]; then
       postfix="${BASH_REMATCH[1]}"
