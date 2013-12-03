@@ -95,7 +95,7 @@ do_set() {
    fi
 
    local postfix
-   if [[ ${target} =~ (\-([0-9\.]+)) ]]; then
+   if [[ ${target} =~ scala(\-[0-9\.]+) ]]; then
       postfix="${BASH_REMATCH[1]}"
    else
       write_error_msg "Incorrect target"
