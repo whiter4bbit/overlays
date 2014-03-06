@@ -11,9 +11,8 @@ LICENSE="BSD"
 DESCRIPTION="sbt is a build tool for Scala and Java projects that aims to do the basics well"
 HOMEPAGE="http://github.com/harrah/xsbt"
 MY_PN="sbt-launch"
-MY_PV="0.13.0-20130521-052158"
-OUT_PN="${MY_PN}-${MY_PV}"
-SRC_URI="http://typesafe.artifactoryonline.com/typesafe/ivy-snapshots/org.scala-sbt/sbt-launch/${MY_PV}/${MY_PN}.jar -> ${OUT_PN}.jar"
+OUT_PN="${MY_PN}-${PV}"
+SRC_URI="http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/${MY_PN}/${PV}/${MY_PN}.jar -> ${OUT_PN}.jar"
 
 DEPEND=">=virtual/jdk-1.6"
 KEYWORDS="~amd64 ~x86"
@@ -28,3 +27,4 @@ src_install() {
     java-pkg_dojar ${MY_PN}.jar
     java-pkg_dolauncher sbt --main xsbt.boot.Boot --java_args "-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M"
 }
+
